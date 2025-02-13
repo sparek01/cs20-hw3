@@ -50,9 +50,7 @@
         <h1>Joe's Hot Dogs</h1>
         <img src='hotdog.jpg'>
         <div class="item-list">
-            <p><strong>Hot dogs:</strong> $4.99</p>
-            <p><strong>French fries:</strong> $3.99</p>
-            <p><strong>Drinks:</strong> $1.79</p>
+
         </div>
         <script>
             // set prices of each item
@@ -86,21 +84,23 @@
             let subtotal = (numDogs * priceDogs) + (numFries * priceFries) + (numDrinks * priceDrinks);
 
             let discount = 0.00;
+            let newSubtotal = subtotal;
             // calculate discount if applicable
             if (subtotal >= 30) {
                 discount = subtotal * .1;
-                subtotal-= discount;
+                newSubtotal = subtotal - discount;
             }
 
             // calculate total (with tax)
-            const tax = subtotal * .0625
-            const total = subtotal + tax;
+            const tax = newSubtotal * .0625
+            const total = newSubtotal + tax;
 
             document.write("<p><strong>Hot dogs:</strong> " + numDogs + " x $" + priceDogs + " = $" + showMoney(numDogs * priceDogs) + "</p>");
             document.write("<p><strong>French fries:</strong> " + numFries + " x $" + priceFries + " = $" + showMoney(numFries * priceFries) + "</p>");
             document.write("<p><strong>Drinks:</strong> " + numDrinks + " x $" + priceDrinks + " = $" + showMoney(numDrinks * priceDrinks) + "</p>");
-            document.write("<p class='total'>Discount: $" + showMoney(discount) + "</p>");
             document.write("<p class='total'>Subtotal: $" + showMoney(subtotal) + "</p>");
+            document.write("<p class='total'>Discount: $" + showMoney(discount) + "</p>");
+            document.write("<p class='total'>New subtotal: $" + showMoney(newSubtotal) + "</p>");
             document.write("<p class='total'>Tax: $" + showMoney(tax) + "</p>");
             document.write("<p class='total'>Total after tax: $" + showMoney(total) + "</p>");
         </script>
